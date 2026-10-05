@@ -23,7 +23,7 @@ val appModule = module {
     viewModel { GameDetailsViewModel(get()) }
 }
 
-//Aki tem definicido
+//Aki tem definido
 //OkHttp: comunicação HTTP e limites de espera.
 //Retrofit: endereço da API e construção do serviço.
 //Gson: conversão de JSON em objetos Kotlin.
