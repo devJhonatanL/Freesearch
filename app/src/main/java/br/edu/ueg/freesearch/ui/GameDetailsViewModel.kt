@@ -1,5 +1,6 @@
 package br.edu.ueg.freesearch.ui
 
+//controla o carregamento dos detalhes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.edu.ueg.freesearch.data.GameDetailsRepository

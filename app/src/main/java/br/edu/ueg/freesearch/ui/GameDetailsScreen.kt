@@ -25,6 +25,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
 
+//Esse arquivo apresenta a ficha, a descrição, a galeria e os requisitos.
+
 @Composable
 fun GameDetailsRoute(gameId: Int, onBack: () -> Unit,
                      viewModel: GameDetailsViewModel = koinViewModel()) {

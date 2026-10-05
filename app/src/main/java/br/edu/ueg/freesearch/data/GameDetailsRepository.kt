@@ -1,8 +1,9 @@
 package br.edu.ueg.freesearch.data
-//Faz o mesmo papel do repositório anterior, so que para um único jogo.
+
 import br.edu.ueg.freesearch.model.GameDetails
 import com.google.gson.JsonParseException
 
+//Faz o mesmo papel do repositório anterior, so que para um único jogo.
 interface GameDetailsRepository { suspend fun getGame(id: Int): GameDetails }
 
 class RemoteGameDetailsRepository(private val api: FreeToGameApi) : GameDetailsRepository {

@@ -11,3 +11,5 @@ class FreesearchApplication : Application() {
         startKoin { androidContext(this@FreesearchApplication); modules(appModule) }
     }
 }
+
+//Inicia o Koin e carregar as configurações do AppModule

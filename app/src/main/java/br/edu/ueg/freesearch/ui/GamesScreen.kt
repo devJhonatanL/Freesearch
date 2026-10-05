@@ -25,7 +25,10 @@ import br.edu.ueg.freesearch.model.Game
 import br.edu.ueg.freesearch.model.GamePlatform
 import coil.compose.AsyncImage
 import org.koin.androidx.compose.koinViewModel
+//Em geral monta os elementos visiveis da tela
 
+
+//Conecta a tela à ViewModel e decide entre mostrar catálogo ou detalhes
 @Composable
 fun GamesRoute(viewModel: GamesViewModel = koinViewModel()) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -43,7 +46,7 @@ fun GamesRoute(viewModel: GamesViewModel = koinViewModel()) {
         GameDetailsRoute(id, onBack = { selectedGameId = null })
     }
 }
-
+//Desenha a tela principal conforme o estado recebido.
 @Composable
 fun GamesScreen(state: GamesUiState, query: String, platform: String,
                 onQuery: (String) -> Unit, onPlatform: (GamePlatform) -> Unit,
@@ -117,7 +120,7 @@ fun GamesScreen(state: GamesUiState, query: String, platform: String,
         title = { Text("Link indisponível") }, text = { Text("Não foi possível abrir este endereço no navegador.") },
         confirmButton = { TextButton(onClick = { linkError = false }) { Text("Entendi") } })
 }
-
+//Desenha uma mensagem acompanhada de um botão, como no erro ou na busca vazia.
 @Composable
 private fun MessageContent(title: String, description: String, action: String, onAction: () -> Unit) {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -128,7 +131,7 @@ private fun MessageContent(title: String, description: String, action: String, o
         }
     }
 }
-
+//Desenha um card com capa, título, descrição e botão.
 @Composable
 private fun GameCard(game: Game, onOpen: () -> Unit) {
     Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(
