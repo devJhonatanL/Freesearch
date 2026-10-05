@@ -11,3 +11,7 @@ class RemoteGamesRepository(private val api: FreeToGameApi) : GamesRepository {
     override suspend fun getGames(): List<Game> = api.getGames()
         .mapNotNull { it.toDomain() }.distinctBy { it.id }
 }
+//O trabalho da implementação ta aqui:
+//Essa parte aqui Busca os jogos na API.
+//Converte cada GameDto em Game, descartando os inválidos.
+//Remove registros com identificadores repetidos.

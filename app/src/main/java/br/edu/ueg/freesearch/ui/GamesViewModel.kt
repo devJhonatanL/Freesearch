@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
-
+//Essa parte coordena o carregamento, a busca, os filtros e os erros.
 sealed interface GamesUiState {
     data object Loading : GamesUiState
     data class Success(val games: List<Game>, val total: Int) : GamesUiState
@@ -37,6 +37,7 @@ class GamesViewModel(
 
     init { load() }
 
+    //pede o catálogo ao repositório.
     fun load() {
         if (request?.isActive == true) return
         request = viewModelScope.launch {
@@ -45,7 +46,7 @@ class GamesViewModel(
                 allGames = repository.getGames()
                 publishGames()
             } catch (cancelled: CancellationException) {
-                throw cancelled // Não converte cancelamento de ciclo de vida em erro.
+                throw cancelled
             } catch (error: Exception) {
                 _state.value = GamesUiState.Error(when (error) {
                     is HttpException -> "O serviço de jogos está indisponível (HTTP ${error.code()}). Tente novamente."
@@ -56,17 +57,17 @@ class GamesViewModel(
             }
         }
     }
-
+    //Recebe o texto digitado e atualiza os resultados
     fun onQueryChange(value: String) {
         savedState["query"] = value
         if (_state.value is GamesUiState.Success) publishGames()
     }
-
+    //Recebe o filtro escolhido, os da game.kt (PC, navegador, todos)
     fun onPlatformChange(value: GamePlatform) {
         savedState["platform"] = value.name
         if (_state.value is GamesUiState.Success) publishGames()
     }
-
+    //Aplica a pesquisa e disponibiliza a lista resultante para a tela
     private fun publishGames() {
         val selected = GamePlatform.entries.firstOrNull { it.name == platform.value } ?: GamePlatform.ALL
         _state.update { GamesUiState.Success(filterGames(allGames, query.value, selected), allGames.size) }

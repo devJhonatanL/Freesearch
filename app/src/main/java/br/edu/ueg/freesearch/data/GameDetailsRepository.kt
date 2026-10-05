@@ -1,5 +1,5 @@
 package br.edu.ueg.freesearch.data
-
+//Faz o mesmo papel do repositório anterior, so que para um único jogo.
 import br.edu.ueg.freesearch.model.GameDetails
 import com.google.gson.JsonParseException
 
