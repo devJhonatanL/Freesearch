@@ -1,5 +1,8 @@
 package br.edu.ueg.freesearch.model
 
+//Essa parte o jogo usado dentro do aplicativo
+//A diferença entre o Dto é que aki os  dados estão preparados para o app usar.
+
 data class Game(
     val id: Int,
     val title: String,
@@ -11,12 +14,12 @@ data class Game(
     val releaseDate: String,
     val url: String
 )
-
+//Classe especial enumardada pra fazer definir as opções
 enum class GamePlatform(val label: String) {
     ALL("Todos"), PC("PC"), BROWSER("Navegador")
 }
 
-// A busca usa o catálogo já carregado, sem uma chamada HTTP por letra.
+//A busca usa o catálogo já carregado, sem uma chamada HTTP por letra.
 fun filterGames(games: List<Game>, query: String, platform: GamePlatform): List<Game> {
     val term = query.trim()
     return games.filter { game ->

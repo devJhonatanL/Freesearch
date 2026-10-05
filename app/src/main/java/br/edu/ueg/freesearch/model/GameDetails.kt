@@ -1,5 +1,5 @@
 package br.edu.ueg.freesearch.model
-
+//Explicação similar ao outro
 data class GameDetails(
     val id: Int,
     val title: String,

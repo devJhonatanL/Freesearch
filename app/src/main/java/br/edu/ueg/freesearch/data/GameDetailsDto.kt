@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 //Mesma coisa do GameDto so q pros detalhes do jogo.
+//La em baixo converte alguns dados para um formato mais brasileiro, exemplo: data.
 //Tambem possui algumas informações adicionais e duas estruturas extras RequirementsDto (requisito) e ScreenshotDto (foto)
 data class GameDetailsDto(
     val id: Int? = null,
